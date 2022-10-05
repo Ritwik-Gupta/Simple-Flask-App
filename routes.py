@@ -5,6 +5,7 @@ from flask import render_template, redirect, url_for, flash
 from datetime import datetime
 
 
+@app.route("/")
 @app.route("/index", methods=["GET", "POST"])
 def index():
     tasks = Task.query.all()
@@ -43,6 +44,7 @@ def edit(task_id):
 
     flash("No such task found!")
 
+
 @app.route("/delete/<int:task_id>")
 def delete(task_id):
     task = Task.query.filter_by(id=task_id).first()
@@ -51,4 +53,3 @@ def delete(task_id):
         db.session.commit()
         flash("Task deleted successfully!")
         return redirect(url_for("index"))
-
