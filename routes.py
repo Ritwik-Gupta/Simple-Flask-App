@@ -5,7 +5,6 @@ from flask import render_template, redirect, url_for, flash
 from datetime import datetime
 
 
-@app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 def index():
     tasks = Task.query.all()
